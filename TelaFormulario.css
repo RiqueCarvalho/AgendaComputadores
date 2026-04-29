@@ -1,0 +1,177 @@
+/* Estilos Gerais */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #999;
+}
+
+/* Cabeçalho Azul */
+header {
+    background-color: #2293ce;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+}
+
+/* LOGO NO CANTO ESQUERDO (IMPORTANTE) */
+.logo-sp {
+    position: absolute;
+    left: 30px;
+    top: 40px;
+}
+
+.logo-sp img {
+    width: 120px;
+    height: auto;
+}
+
+/* MENU DIREITA */
+.menu-icon {
+    position: absolute;
+    right: 40px;
+    top: 60px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* LOGO CENTRAL (escola) */
+.logo-escola {
+    width: 90px;
+    height: 90px;
+    background-color: white;
+    border-radius: 50%;
+    border: 2px solid #000;
+    margin-bottom: 10px;
+}
+
+/* TÍTULO */
+header h1 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+/* Container do Formulário */
+.main-container {
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;
+    padding: 20px;
+}
+
+/* CARD */
+.form-card {
+    background-color: #d9d9d9;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 800px;
+}
+
+/* GRID */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+}
+
+/* INPUTS */
+.input-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-box label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #000;
+}
+
+.input-box input,
+.input-box select {
+    padding: 12px;
+    border: 1px solid #777;
+    border-radius: 10px;
+    background-color: #e6e6e6;
+    font-size: 16px;
+}
+
+/* BOTÃO */
+.btn-container {
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn-enviar {
+    background-color: #087e24;
+    color: black;
+    border: none;
+    padding: 12px 60px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: #0bbf35;
+    transform: scale(1.02);
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-container {
+        grid-column: span 1;
+    }
+
+    .logo-sp {
+        left: 10px;
+        top: 20px;
+    }
+
+    .logo-sp img {
+        width: 80px;
+    }
+}
+
+/* MENU LATERAL */
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 260px;
+    height: 100%;
+    background-color: #e6e6e6;
+    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.3);
+    padding-top: 100px;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-lateral a {
+    padding: 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+    transition: 0.2s;
+}
+
+.menu-lateral a:hover {
+    background-color: #d0d0d0;
+}
