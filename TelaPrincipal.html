@@ -1,143 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reserva de Sala</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background-color: #f1ebeb;
-    }
-
-    /* TOPO */
-    .topo {
-      position: relative;
-      height: 120px;
-      background-color: #e6dfdf;
-      border-bottom: 1px solid #cfcfcf;
-    }
-
-    .decor {
-      position: absolute;
-      width: 220px;
-      height: 120px;
-      background: #1f1bbf;
-      border-bottom-right-radius: 100px;
-    }
-
-    .menu {
-      position: absolute;
-      right: 30px;
-      top: 40px;
-      font-size: 28px;
-      cursor: pointer;
-    }
-
-    /* CONTAINER */
-    .container {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 60px;
-      flex-wrap: wrap;
-    }
-
-    /* CARD */
-    .card {
-      width: 140px;
-      height: 140px;
-      background: #e9e4e4;
-      border-radius: 12px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-      text-align: center;
-      padding-top: 20px;
-      transition: 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    /* ÍCONES */
-    .icon {
-      width: 60px;
-      height: 60px;
-      margin: 0 auto 10px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-    }
-
-    /* CORES */
-    .calendario { background: #f4b04f; }
-    .reserva { background: #8be28b; }
-    .info { background: #8b8fe2; }
-    .aviso { background: #b18be2; }
-    .cadastro { background: #e28bb3; }
-
-    .card p {
-      color: #1f1bbf;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .rodape {
-      margin-top: 80px;
-      text-align: center;
-      color: #555;
-      font-size: 14px;
-    }
-  </style>
-
+  <link rel="stylesheet" href="TelaPrincipal.css">
 </head>
+
 <body>
 
+  <!-- CARROSSEL DE FUNDO -->
+  <div class="background-slider">
+    <img src="imagens/informatica.jpg" class="slide">
+    <img src="imagens/informatica2.jpg" class="slide">
+    <img src="imagens/informática-capa-1080x400.jpg" class="slide">
+    <img src="imagens/treinar.jpg" class="slide">
+  </div>
+
+  <!-- TOPO -->
   <header class="topo">
-    <div class="decor"></div>
-    <div class="menu">☰</div>
+    <div class="decor">
+      <img src="imagens/São_Paulo_Government_Logo.svg.png" alt="Governo de São Paulo">
+    </div>
+
+    <div class="menu" onclick="toggleMenu()">☰</div>
   </header>
 
+  <!-- MENU LATERAL -->
+  <div id="menuLateral" class="menu-lateral">
+    <a href="TelaFormulario.html">Nova reserva</a>
+    <a href="TelaCalendario.html">Visualizar datas</a>
+    <a href="TelaSobre.html">Sobre a Sala</a>
+    <a href="TelaAvisos.html">Avisos</a>
+  </div>
+
+  <!-- CONTEÚDO -->
   <main class="container">
 
-    <div class="card">
+    <a href="TelaCalendario.html" class="card">
       <div class="icon calendario">📅</div>
       <p>Calendário</p>
-    </div>
+    </a>
 
-    <div class="card">
+    <a href="TelaFormulario.html" class="card">
       <div class="icon reserva">＋</div>
       <p>Nova Reserva</p>
-    </div>
+    </a>
 
-    <div class="card">
+    <a href="TelaSobre.html" class="card">
       <div class="icon info">ℹ</div>
       <p>Sobre a Sala</p>
-    </div>
+    </a>
 
-    <div class="card">
+    <a href="TelaAvisos.html" class="card">
       <div class="icon aviso">⚠</div>
       <p>Avisos</p>
-    </div>
+    </a>
 
-    <div class="card">
+    <a href="TelaCadastro.html" class="card">
       <div class="icon cadastro">📝</div>
       <p>Cadastro Turma</p>
-    </div>
+    </a>
 
   </main>
 
+  <!-- RODAPÉ -->
   <footer class="rodape">
-    Governo de São Paulo | Ismael
+    <img src="imagens/São_Paulo_Government_Logo.svg.png" class="logo-footer">
+    <p>Governo de São Paulo | SAMPA</p>
   </footer>
 
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- SCRIPT -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menuLateral");
+      menu.style.right = (menu.style.right === "0px") ? "-300px" : "0px";
+    }
+
+    let index = 0;
+    const slides = $(".slide");
+
+    slides.hide().eq(0).show();
+
+    function trocarSlide() {
+      slides.eq(index).fadeOut(800);
+      index = (index + 1) % slides.length;
+      slides.eq(index).fadeIn(800);
+    }
+
+    setInterval(trocarSlide, 3000);
+  </script>
+
 </body>
+
 </html>
