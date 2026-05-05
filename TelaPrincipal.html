@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Reserva de Sala</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f1ebeb;
+    }
+
+    /* TOPO */
+    .topo {
+      position: relative;
+      height: 120px;
+      background-color: #e6dfdf;
+      border-bottom: 1px solid #cfcfcf;
+    }
+
+    .decor {
+      position: absolute;
+      width: 220px;
+      height: 120px;
+      background: #1f1bbf;
+      border-bottom-right-radius: 100px;
+    }
+
+    .menu {
+      position: absolute;
+      right: 30px;
+      top: 40px;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* CONTAINER */
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    /* CARD */
+    .card {
+      width: 140px;
+      height: 140px;
+      background: #e9e4e4;
+      border-radius: 12px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      text-align: center;
+      padding-top: 20px;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* ÍCONES */
+    .icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 10px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+
+    /* CORES */
+    .calendario { background: #f4b04f; }
+    .reserva { background: #8be28b; }
+    .info { background: #8b8fe2; }
+    .aviso { background: #b18be2; }
+    .cadastro { background: #e28bb3; }
+
+    .card p {
+      color: #1f1bbf;
+      font-weight: bold;
+      font-size: 14px;
+    }
