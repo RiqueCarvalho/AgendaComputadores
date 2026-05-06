@@ -1,0 +1,146 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial;
+  }
+  
+  body{
+    background: linear-gradient(to right, #2e2ebd, #678bff);
+  }
+  
+  /* TOPO */
+  .topo{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    height:120px;
+    padding-top:15px;
+  }
+  
+  .azul-topo{
+    width:210px;
+    height:100px;
+    background:#aecbce;
+    border-bottom-right-radius:100px;
+    display:flex;
+    align-items:center;
+    padding-left:35px;
+  }
+  
+  .azul-topo img{
+    height:90px;
+  }
+  
+  .titulo{
+    margin-right:20px;
+    text-align:right;
+    color:#6f6f6f;
+  }
+  
+  /* CONTAINER */
+  .container{
+    width:90%;
+    margin:-30px auto 0;
+  }
+  
+  .box{
+    background:#c9bbbb;
+    border-radius:20px;
+    padding:20px;
+    border:1px solid #999;
+  }
+  
+  /* BUSCA */
+  .barra{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:10px;
+  }
+  
+  .barra input{
+    padding:6px;
+    width:220px;
+  }
+  
+  .barra button{
+    padding:6px 10px;
+    margin-left:5px;
+    cursor:pointer;
+  }
+  
+  /* TABELA */
+  .tabela{
+    border:1px solid #777;
+    border-radius:10px;
+    overflow:hidden;
+    background:#e6e6e6;
+  }
+  
+  table{
+    width:100%;
+    border-collapse:collapse;
+  }
+  
+  th, td{
+    border:1px solid #777;
+  }
+  
+  th{
+    background:#c6c6c6;
+    padding:12px;
+    text-align:center;
+  }
+  
+  td{
+    height:70px;
+    text-align:center;
+  }
+  
+  /* AÇÕES */
+  .acoes{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+  }
+  
+  /* BOTÕES */
+  .btn{
+    width:32px;
+    height:32px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:6px;
+    font-size:14px;
+    color:#fff;
+  }
+  
+  .btn-azul{
+    background:#28c0e8;
+  }
+  
+  .btn-vermelho{
+    background:#ff2b2b;
+  }
+  
+  .btn-amarelo{
+    background:#ffd500;
+    color:#000;
+  }
+  
+  /* RODAPÉ */
+  .rodape{
+    text-align:center;
+    margin-top:15px;
+  }
+  
+  .update{
+    background:#57d23b;
+    border:none;
+    padding:10px 40px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+  }
