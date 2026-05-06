@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva de Sala</title>
+  <link rel="stylesheet" href="TelaPrincipal.css">
+</head>
+
+<body>
+
+  <!-- CARROSSEL DE FUNDO -->
+  <div class="background-slider">
+    <img src="imagens/informatica.jpg" class="slide">
+    <img src="imagens/informatica2.jpg" class="slide">
+    <img src="imagens/informática-capa-1080x400.jpg" class="slide">
+    <img src="imagens/treinar.jpg" class="slide">
+  </div>
+
+  <!-- TOPO -->
+  <header class="topo">
+    <div class="decor">
+      <img src="imagens/São_Paulo_Government_Logo.svg.png" alt="Governo de São Paulo">
+    </div>
+
+    <div class="menu" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <!-- MENU LATERAL -->
+  <div id="menuLateral" class="menu-lateral">
+    <a href="TelaFormulario.html">Nova reserva</a>
+    <a href="TelaCalendario.html">Visualizar datas</a>
+    <a href="TelaSobre.html">Sobre a Sala</a>
+    <a href="TelaAvisos.html">Avisos</a>
+  </div>
+
+  <!-- CONTEÚDO -->
+  <main class="container">
+
+    <a href="TelaCalendario.html" class="card">
+      <div class="icon calendario">📅</div>
+      <h3>Calendário</h3>
+      <p>Visualize datas, horários e reservas das salas.</p>
+      <span class="seta">→</span>
+    </a>
+
+    <a href="TelaFormulario.html" class="card">
+      <div class="icon reserva">📝</div>
+      <h3>Nova Reserva</h3>
+      <p>Solicite uma nova reserva de sala ou laboratório.</p>
+      <span class="seta">→</span>
+    </a>
+
+    <a href="TelaSobre.html" class="card destaque">
+      <div class="icon info">ℹ</div>
+      <h3>Sobre a Sala</h3>
+      <p>Informações, regras e orientações de uso da sala.</p>
+      <span class="seta">→</span>
+    </a>
+
+    <a href="TelaAvisos.html" class="card">
+      <div class="icon aviso">⚠</div>
+      <h3>Avisos</h3>
+      <p>Comunicados importantes da escola e coordenação.</p>
+      <span class="seta">→</span>
+    </a>
+
+    <a href="TelaCadastro.html" class="card">
+      <div class="icon cadastro">📋</div>
+      <h3>Cadastro Turma</h3>
+      <p>Cadastre turmas para utilização dos ambientes escolares.</p>
+      <span class="seta">→</span>
+    </a>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="rodape">
+    <img src="imagens/São_Paulo_Government_Logo.svg.png" class="logo-footer">
+    <p>Governo de São Paulo | SAMPA</p>
+  </footer>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- SCRIPT -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menuLateral");
+      menu.style.right = (menu.style.right === "0px") ? "-300px" : "0px";
+    }
+
+    let index = 0;
+    const slides = $(".slide");
+
+    slides.hide().eq(0).show();
+
+    function trocarSlide() {
+      slides.eq(index).fadeOut(800);
+      index = (index + 1) % slides.length;
+      slides.eq(index).fadeIn(800);
+    }
+
+    setInterval(trocarSlide, 3000);
+  </script>
+
+</body>
+
+</html>
