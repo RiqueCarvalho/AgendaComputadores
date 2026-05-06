@@ -35,41 +35,47 @@
 
                     <div class="input-box">
                         <label>Nome completo</label>
-                        <input type="text">
+                        <!-- Adicionado id="nomeCompleto" -->
+                        <input type="text" id="nomeCompleto">
                     </div>
 
                     <div class="input-box">
                         <label>Data e Hora</label>
-                        <input type="datetime-local">
+                        <!-- Adicionado id="dataHora" -->
+                        <input type="datetime-local" id="dataHora">
                     </div>
 
                     <div class="input-box">
                         <label>Número de Alunos</label>
-                        <input type="number">
+                        <!-- Adicionado id="numeroAlunos" -->
+                        <input type="number" id="numeroAlunos">
                     </div>
 
                     <div class="input-box">
                         <label>Finalidade de Uso</label>
-                        <input type="text">
+                        <!-- Adicionado id="finalidadeUso" -->
+                        <input type="text" id="finalidadeUso">
                     </div>
 
                     <div class="input-box">
                         <label>Equipamentos</label>
-                        <input type="text">
+                        <!-- Adicionado id="equipamentos" -->
+                        <input type="text" id="equipamentos">
                     </div>
 
                     <div class="input-box">
                         <label>Turma</label>
-                        <select>
-                            <option>Selecione...</option>
-                            <option>6º Ano A</option>
-                            <option>7º Ano A</option>
-                            <option>1º EM</option>
+                        <!-- Adicionado id="turma" -->
+                        <select id="turma">
+                            <option value="">Selecione...</option>
+                            <option value="6º Ano A">6º Ano A</option>
+                            <option value="7º Ano A">7º Ano A</option>
+                            <option value="1º EM">1º EM</option>
                         </select>
                     </div>
 
                     <div class="btn-container">
-                        <button class="btn-enviar">Agendar</button>
+                        <button type="submit" class="btn-enviar">Agendar</button>
                     </div>
 
                 </div>
