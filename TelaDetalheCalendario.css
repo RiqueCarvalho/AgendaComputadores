@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Detalhe azul arredondado no canto superior */
+.top-blob {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 400px;
+    height: 300px;
+    background-color: #0000ff;
+    border-radius: 0 0 100% 0;
+    z-index: -1;
+}
+
+/* Ícone do Menu */
+.menu-icon {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    cursor: pointer;
+}
+
+.menu-icon span {
+    display: block;
+    width: 35px;
+    height: 4px;
+    background-color: #000;
+    margin: 6px 0;
+    border-radius: 2px;
+}
+
+/* Cartão Central */
+.container {
+    width: 100%;
+    max-width: 650px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.card h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: normal;
+}
+
+.schedule-list {
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.schedule-list p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+/* Botão Voltar */
+.btn-voltar {
+    background-color: #22c55e; /* Verde da imagem */
+    color: black;
+    border: none;
+    padding: 12px 60px;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s;
+}
+
+.btn-voltar:hover {
+    background-color: #16a34a;
+}
+
+/* Rodapé com Logos */
+.footer-logos {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-sp {
+    height: 80px;
+}
+
+.logo-escola {
+    height: 80px;
+}
+
+/* Efeito de sombra azul nas laterais (Blur) */
+body::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0,0,255,0.15) 0%, transparent 70%);
+    z-index: -1;
+}
