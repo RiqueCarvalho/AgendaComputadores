@@ -1,236 +1,249 @@
 /* =====================
    RESET & BASE
 ===================== */
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
-    color: #222;
-    min-height: 100vh;
-  }
-  
-  /* =====================
-     HEADER
-  ===================== */  
-  header {
-    background-color: #112679;
-    position: relative;
-    padding-bottom: 30px;
-    overflow: hidden;
-
-    border-bottom-left-radius: 50% 40%;
-    border-bottom-right-radius: 50% 40%;
-  }
-  
-  .header-inner{
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(to right, #0041b3, #0027a7);
-    
-    border-bottom-left-radius: 50% 40%;
-    border-bottom-right-radius: 50% 40%;
-
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px;
-    color: white;
-    font-family: Arial;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-  .logo-wrap {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 10px;
-    z-index: 10; /* fica em cima de tudo */
-  }
-  
-  .logo {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0);
-    background: rgba(255,255,255,0.1);
-    padding: 4px;
-  }
-  
-  .titulo {
-    color: #ffffff;
-    font-size: 2rem;
-    font-weight: 400;
-    letter-spacing: 2px;
-    margin-top: 80px;
-    text-align: center;
-    width: 100%;
-  }
-  
-  .menu-btn {
-    position: absolute;
-    right: 24px;
-    top: 22px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 4px;
-  }
-  
-  .menu-btn span {
-    display: block;
-    width: 30px;
-    height: 4px;
-    background-color: #fff;
-    border-radius: 2px;
-  }
-  
-  /* Onda na base do header */
-  .header-wave {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 50%;
-    height: 40px;
-    border-radius: 50% 50% 0 0 / 50% 50% 0 0;
-  }
-  
-  /* =====================
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #222;
+  min-height: 100vh;
+}
+
+/* =====================
+     HEADER
+  ===================== */
+header {
+  background-color: #112679;
+  position: relative;
+  padding-bottom: 30px;
+  overflow: hidden;
+
+  border-bottom-left-radius: 50% 40%;
+  border-bottom-right-radius: 50% 40%;
+}
+
+.header-inner {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(to right, #0041b3, #0027a7);
+
+  border-bottom-left-radius: 50% 40%;
+  border-bottom-right-radius: 50% 40%;
+
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  color: white;
+  font-family: Arial;
+  box-sizing: border-box;
+}
+
+.logo-wrap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10px;
+  z-index: 10;
+  /* fica em cima de tudo */
+}
+
+.logo {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px;
+}
+
+.titulo {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-top: 80px;
+  text-align: center;
+  width: 100%;
+}
+
+.menu-btn {
+  position: absolute;
+  right: 24px;
+  top: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+
+.menu-btn span {
+  display: block;
+  width: 30px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+/* Onda na base do header */
+.header-wave {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 50%;
+  height: 40px;
+  border-radius: 50% 50% 0 0 / 50% 50% 0 0;
+}
+
+/* =====================
      MAIN / GRID
   ===================== */
-  main {
-    padding: 40px 24px 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .cards-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 32px;
-    align-items: center;
-  }
-  
-  /* =====================
+main {
+  padding: 40px 24px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+/* =====================
      CARDS
   ===================== */
-  .card {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .card-img-wrap {
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
-    border: 2px solid #000000;
-    border-radius: 10px 10px 0 0;
-  }
-  
-  .card-img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  
-  .card-body {
-    padding: 20px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    border: 1px solid #ddd;
-    border-top: none;
-    border-radius: 0 0 10px 10px;
-    font-size: 0.97rem;
-    line-height: 1.6;
-    color: #222;
-  }
-  
-  /* =====================
+.card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-img-wrap {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border: 2px solid #000000;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  font-size: 0.97rem;
+  line-height: 1.6;
+  color: #222;
+}
+
+/* =====================
      COLUNA CENTRAL (botão)
   ===================== */
-  .center-col {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  /* =====================
+.center-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* =====================
      BOTÃO VOLTAR
   ===================== */
-  .btn-voltar {
-    background-color: #4cce4c;
-    color: #fff;
-    border: none;
-    border-radius: 40px;
-    padding: 16px 48px;
+.btn-voltar {
+  background-color: #4cce4c;
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  padding: 16px 48px;
 
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 12px rgba(76, 206, 76, 0.35);
-    transition: background 0.2s, transform 0.15s;
-  }
-  
-  .btn-voltar:hover {
-    background-color: #3ab83a;
-    transform: scale(1.04);
-  }
-  
-  /* =====================
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(76, 206, 76, 0.35);
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-voltar:hover {
+  background-color: #3ab83a;
+  transform: scale(1.04);
+}
+
+/* =====================
      FOOTER LOGO (SP)
   ===================== */
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 300px;
-    color: #555;
-    font-size: 0.8rem;
-    text-align: center;
-  }
-  
-  .footer-logo img {
-    width: 150px;
-    object-fit: contain;
-  }
-  
-  /* =====================
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 300px;
+  color: #555;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.footer-logo img {
+  width: 150px;
+  object-fit: contain;
+}
+
+/* =====================
      RESPONSIVO
   ===================== */
-  @media (max-width: 768px) {
-    .cards-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .center-col {
-      order: 3;
-    }
-  
-    .card:last-of-type {
-      order: 2;
-    }
-  
-    .titulo {
-      font-size: 1.5rem;
-    }
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
   }
-  
+
+  .center-col {
+    order: 3;
+  }
+
+  .card:last-of-type {
+    order: 2;
+  }
+
+  .titulo {
+    font-size: 1.5rem;
+  }
+}
+
+.btn-voltar {
+  display: inline-block;
+  padding: 10px 20px;
+  background: green;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
