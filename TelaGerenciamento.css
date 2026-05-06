@@ -1,0 +1,208 @@
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body{
+    background: linear-gradient(to right, #ffffff, #a79cff);
+  }
+  
+  /* TOPO */
+  .titulo {
+    margin-right:40px;
+    text-align:right;
+    color:#6f6f6f;
+  
+    position: relative;
+    top: -60px; /* sobe */
+  }
+  
+  
+  .azul{
+    width:220px;
+    height:80px;
+    background:#7073ff;
+    border-bottom-right-radius:100px;
+    display:flex;
+    align-items:center;
+    padding-left:12px;
+  }
+  
+  .azul img{
+    height:65px;
+  }
+  
+  .titulo{
+    margin-right:40px;
+    text-align:right;
+    color:#6f6f6f;
+  }
+  
+  /* CONTAINER */
+  .container{
+    width:92%;
+    margin:-45px auto 0;
+  }
+  
+  /* BOX PRINCIPAL */
+  .box{
+    background:#d3d3d3;
+    border-radius:20px;
+    padding:20px;
+    border:1px solid #9a9a9a;
+  }
+  
+  /* HEADER */
+  .header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  
+  .gov{
+    font-size:13px;
+    font-weight:bold;
+    line-height:16px;
+  }
+  
+  /* FILTROS */
+  .filtros{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  
+  .filtros select{
+    padding:5px;
+  }
+  
+  .filtros input{
+    padding:6px;
+    width:220px;
+    border:1px solid #888;
+  }
+  
+  .filtros button{
+    padding:6px 10px;
+    cursor:pointer;
+  }
+  
+  /* BOTÃO ADD */
+  .add{
+    margin:18px 0;
+    padding:6px 18px;
+    border-radius:20px;
+    border:2px solid #28c94c;
+    color:#28c94c;
+    background:#fff;
+    font-weight:bold;
+    cursor:pointer;
+  }
+  
+  /* TABELA */
+  .tabela{
+    border:1px solid #7a7a7a;
+    border-radius:10px;
+    overflow:hidden;
+    background:#e9e9e9;
+  }
+  
+  table{
+    width:100%;
+    border-collapse:collapse;
+  }
+  
+  /* CABEÇALHO */
+  th{
+    background:#c6c6c6;
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #7a7a7a;
+  }
+  
+  /* LINHAS */
+  td{
+    height:65px;
+    padding:10px;
+    border-bottom:1px solid #7a7a7a;
+  }
+  
+  /* COLUNAS */
+  td:first-child{
+    width:60%;
+  }
+  
+  td:nth-child(2){
+    width:25%;
+    text-align:center;
+  }
+  
+  td:last-child{
+    width:15%;
+    text-align:center;
+  }
+  
+  /* STATUS */
+  .ok{
+    background:#5fd63a;
+    color:#fff;
+    padding:6px 22px;
+    border-radius:20px;
+    font-size:13px;
+  }
+  
+  .no{
+    background:#ff2e2e;
+    color:#fff;
+    padding:6px 22px;
+    border-radius:20px;
+    font-size:13px;
+  }
+  
+  /* ÍCONES */
+  .acoes{
+    font-size:18px;
+    letter-spacing:5px;
+  }
+  
+  /* RODAPÉ */
+  .rodape{
+    text-align:center;
+    margin-top:18px;
+  }
+  
+  .update{
+    background:#5fd63a;
+    color:#000;
+    padding:10px 45px;
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+
+    .topo {
+        position: relative;
+        height: 120px;
+      }
+      
+      /* FUNDO AZUL MELHORADO */
+      .azul {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 380px;
+        height: 120px;
+        background: #6d6d79;
+        border-bottom-right-radius: 150px; /* menor = menos "bolha" */
+        z-index: 1;
+      }
+      
+      /* LOGO DENTRO DO AZUL */
+      .azul img{
+  height:90px;      /* tamanho da logo */
+  margin-top:2px;   /* desce um pouquinho */
+}
+  }
