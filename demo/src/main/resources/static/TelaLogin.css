@@ -1,0 +1,194 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 100vh;
+    background: url('imagens/fundo.png');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; /* Evita barras de rolagem desnecessárias */
+}
+
+/* 🦉 CONFIGURAÇÃO DA CORUJA */
+.coruja-container {
+    position: absolute;
+    left: 8%;
+    top: 14%;
+    width: 400px;
+    cursor: pointer; /* Indica que a coruja é clicável */
+    transition: transform 0.2s;
+}
+
+.coruja-img {
+    width: 100%;
+    display: block;
+}
+
+/* 👁️ ÁREA DOS OLHOS */
+.olho {
+    position: absolute;
+    width: 13%; /* Tamanho da cavidade ocular */
+    height: 13%;
+    pointer-events: none; /* Garante que o mouse passe "através" do olho */
+}
+
+/* Posições relativas ao corpo da coruja */
+.olho-esq {
+    top: 26%;
+    left: 29%;
+}
+
+.olho-dir {
+    top: 26%;
+    left: 50%;
+}
+
+/* A imagem olho.png */
+.imagem-olho {
+    width: 110%; /* Ajuste levemente se o olho parecer pequeno */
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.05s linear; /* Deixa o movimento suave */
+}
+
+/* 📦 CONTAINER DE LOGIN */
+.container {
+    width: 340px;
+    background-color: rgba(217, 217, 217, 0.76); /* Versão semi-transparente */
+    border-radius: 30px;
+    color: #635BFF;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    margin: 100px auto; /* Centraliza o container na tela */
+    position: absolute;
+top: 135px;
+left: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+/* Títulos RG e Senha */
+.container h3 {
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 8px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Caixa que envolve o input e o ícone */
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px; /* Aumentado levemente para melhor respiro */
+    margin-bottom: 20px;
+}
+
+/* Campo de Digitação */
+.input-box input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    outline: none;
+    font-size: 16px;
+    padding: 0 40px 0 20px; /* Padding direito ajustado para o ícone */
+    box-sizing: border-box; /* Garante que o padding não aumente o tamanho da caixa */
+}
+
+/* Ícones (Desenhos) */
+.input-box i {
+    position: absolute;
+    right: 15px; /* Movido mais para o canto direito */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #635BFF;
+}
+
+/* Botão Acessar */
+.btn-acessar {
+    width: 60%;
+    background-color: #24cf00; /* Verde da imagem */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.btn-acessar:hover {
+    background-color: #1eb300;
+}
+
+.login {
+    display: block;      /* Garante que ele aceite margens automáticas */
+    margin-left: auto;   /* Centraliza horizontalmente */
+    margin-right: auto;  /* Centraliza horizontalmente */
+    
+    width: 100%;
+    max-width: 120px;
+    height: 45px;
+    background-color: #22ce00;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 30px;    /* Espaçamento superior */
+    transition: background 0.3s;
+    
+    /* Adicionando a sombra para ficar igual à imagem */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+}
+
+.login:hover {
+    background-color: #28ef00; /* Um verde levemente mais claro */
+    box-shadow: 0 0 15px rgba(34, 206, 0, 0.7); /* Sombra difusa da cor do botão */
+    transform: translateY(-2px); /* Opcional: o botão sobe levemente */
+}
+
+/* 🌀 NOVAS ANIMAÇÕES */
+
+/* Animação de sacudir a coruja */
+.shake-animation {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0) rotate(-1deg); }
+    20%, 80% { transform: translate3d(2px, 0, 0) rotate(2deg); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0) rotate(-3deg); }
+    40%, 60% { transform: translate3d(4px, 0, 0) rotate(3deg); }
+}
+
+/* Animação de olhos tontos (girando) */
+.dizzy-animation {
+    animation: dizzy 0.3s linear infinite;
+}
+
+@keyframes dizzy {
+    from { transform: translate(-50%, -50%) rotate(0deg) translateX(5px) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg) translateX(5px) rotate(-360deg); }
+}

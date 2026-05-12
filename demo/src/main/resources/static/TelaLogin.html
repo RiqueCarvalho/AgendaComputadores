@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="TelaLogin.css">
+    <title>Educare - Login</title>
+    
+</head>
+<body>
+
+    <!-- Container da Coruja com ID para o clique -->
+    <div class="coruja-container" id="coruja-trigger">
+        <img src="imagens/coruja.png" class="coruja-img" alt="Coruja">
+
+        <div class="olho olho-esq">
+            <img src="imagens/olho.png" class="imagem-olho">
+        </div>
+
+        <div class="olho olho-dir">
+            <img src="imagens/olho.png" class="imagem-olho">
+        </div>
+    </div>
+
+    <main class="container">
+        <form>
+            <h3>RG</h3>
+            <div class="input-box">
+                <input placeholder="Ex: 12.345.678-9" type="text" required>
+                <i class="bx bxs-user"></i>
+            </div>
+
+            <h3>Senha</h3>
+            <div class="input-box">
+                <input placeholder="Digite sua senha" type="password" required>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+
+            <button type="submit" class="login">Acessar</button>
+        </form>
+    </main>
+
+    <script>
+        const olhos = document.querySelectorAll('.olho');
+        const corujaContainer = document.getElementById('coruja-trigger');
+        let mouseX = 0;
+        let mouseY = 0;
+        let isDizzy = false;
+
+        // Captura a posição do mouse continuamente
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Só move os olhos se não estiver tonta
+            if (!isDizzy) {
+                updateEyes(mouseX, mouseY);
+            }
+        });
+
+        // Função para calcular o movimento dos olhos
+        function updateEyes(xPos, yPos) {
+            olhos.forEach(olho => {
+                const imagemOlho = olho.querySelector('.imagem-olho');
+                const rect = olho.getBoundingClientRect();
+                const olhoX = rect.left + rect.width / 2;
+                const olhoY = rect.top + rect.height / 2;
+                const angulo = Math.atan2(yPos - olhoY, xPos - olhoX);
+                const maxDist = rect.width * 0.15; 
+                const x = Math.cos(angulo) * maxDist;
+                const y = Math.sin(angulo) * maxDist;
+                imagemOlho.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+            });
+        }
+
+        // Evento de clique na coruja para ativar a animação
+        corujaContainer.addEventListener('click', () => {
+            if (isDizzy) return; // Evita bugs se clicar várias vezes seguidas
+            
+            isDizzy = true;
+            
+            // Adiciona as classes de animação definidas no CSS
+            corujaContainer.classList.add('shake-animation');
+            olhos.forEach(olho => {
+                olho.querySelector('.imagem-olho').classList.add('dizzy-animation');
+            });
+
+            // Para a animação após 1.5 segundos e volta ao normal
+            setTimeout(() => {
+                corujaContainer.classList.remove('shake-animation');
+                olhos.forEach(olho => {
+                    olho.querySelector('.imagem-olho').classList.remove('dizzy-animation');
+                });
+                isDizzy = false;
+                // Re-sincroniza os olhos com a posição atual do mouse
+                updateEyes(mouseX, mouseY);
+            }, 1500);
+        });
+    </script>
+
+</body>
+</html>
