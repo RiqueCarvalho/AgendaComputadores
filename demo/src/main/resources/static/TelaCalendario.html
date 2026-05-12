@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendário de Reservas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="TelaCalendario.css">
+</head>
+
+<body>
+
+    <main class="page">
+
+        <header class="header">
+
+            <h1 class="title">SETEMBRO 2026</h1>
+
+            <div class="right-top">
+
+                <p class="subtitle">Calendário de reservas</p>
+
+                <div class="controls">
+                    <button class="btn nav" id="prevBtn">← Anterior</button>
+                    <button class="btn nav" id="nextBtn">Próximo →</button>
+                </div>
+
+            </div>
+
+        </header>
+
+        <section class="main">
+
+            <section class="calendar-area reveal">
+
+                <div class="weekdays">
+                    <div class="weekday">DOM.</div>
+                    <div class="weekday">SEG.</div>
+                    <div class="weekday">TER.</div>
+                    <div class="weekday">QUA.</div>
+                    <div class="weekday">QUI.</div>
+                    <div class="weekday">SEX.</div>
+                    <div class="weekday">SAB.</div>
+                </div>
+
+                <div class="calendar" id="calendar"></div>
+
+            </section>
+
+            <aside class="side reveal">
+
+                <div class="info-panel">
+
+                    <h3>Reservas do dia</h3>
+
+                    <p class="info-empty" id="emptyText">
+                        Clique em um dia útil com reserva para visualizar os dados.
+                    </p>
+
+                    <div class="mini-table" id="miniTable">
+
+                        <div class="mini-date" id="miniDate">
+                            00/00/0000
+                        </div>
+
+                        <div class="mini-head">
+                            <div>Tipo</div>
+                            <div>Turma</div>
+                            <div>Horário</div>
+                        </div>
+
+                        <div id="miniBody"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="legend">
+
+                    <div class="legend-item">
+                        <span class="half orange"></span>
+                        <span>Informática</span>
+                    </div>
+
+                    <div class="legend-item">
+                        <span class="half purple"></span>
+                        <span>Notebook</span>
+                    </div>
+
+                    <div class="legend-item">
+                        <span class="half green"></span>
+                        <span>Celulares</span>
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+    <script>
+
+        const monthNames = [
+            "JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO",
+            "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"
+        ];
+
+        const typeNames = {
+            informatica: "Informática",
+            notebook: "Notebook",
+            celulares: "Celulares"
+        };
+
+        const reservations = {
+
+            "2026-09-02": [
+                {
+                    type: "informatica",
+                    turma: "3ºC",
+                    horario: "7:00 - 9:30",
+                    professor: "Prof. Carlos Almeida"
+                },
+
+                {
+                    type: "informatica",
+                    turma: "3ºC",
+                    horario: "9:50 - 12:20",
+                    professor: "Prof. Carlos Almeida"
+                }
+            ],
+
+            "2026-09-15": [
+                {
+                    type: "notebook",
+                    turma: "2ºB",
+                    horario: "13:00 - 15:00"
+                }
+            ],
+
+            "2026-09-18": [
+                {
+                    type: "celulares",
+                    turma: "1ºA",
+                    horario: "8:00 - 10:00"
+                }
+            ],
+
+            "2026-09-22": [
+                {
+                    type: "informatica",
+                    turma: "2ºC",
+                    horario: "10:00 - 11:40"
+                }
+            ],
+
+            "2026-09-24": [
+                {
+                    type: "notebook",
+                    turma: "3ºA",
+                    horario: "7:30 - 9:10"
+                }
+            ],
+
+            "2026-09-29": [
+                {
+                    type: "celulares",
+                    turma: "1ºC",
+                    horario: "14:00 - 16:00"
+                }
+            ]
+        };
+
+        let currentYear = 2026;
+        let currentMonth = 8;
+
+        const calendar = document.getElementById("calendar");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        const emptyText = document.getElementById("emptyText");
+        const miniTable = document.getElementById("miniTable");
+        const miniDate = document.getElementById("miniDate");
+        const miniBody = document.getElementById("miniBody");
+
+        function pad(n) {
+            return String(n).padStart(2, "0");
+        }
+
+        function formatDateBR(y, m, d) {
+            return `${pad(d)}/${pad(m + 1)}/${y}`;
+        }
+
+        function clearInfo() {
+
+            emptyText.style.display = "block";
+
+            miniTable.classList.remove("active");
+
+            miniBody.innerHTML = "";
+        }
+
+        function showInfo(dateKey, list) {
+
+            const [y, m, d] = dateKey.split("-").map(Number);
+
+            miniDate.textContent = formatDateBR(y, m - 1, d);
+
+            miniBody.innerHTML = "";
+
+            list.forEach(item => {
+
+                const row = document.createElement("div");
+
+                row.className = "mini-row";
+
+                row.innerHTML = `
+                    <div>
+                        <span class="type-badge ${item.type}">
+                            ${typeNames[item.type]}
+                        </span>
+                    </div>
+
+                    <div>${item.turma}</div>
+
+                    <div>${item.horario}</div>
+                `;
+
+                miniBody.appendChild(row);
+
+            });
+
+            emptyText.style.display = "none";
+
+            miniTable.classList.add("active");
+        }
+
+        function renderCalendar(year, month) {
+
+            calendar.innerHTML = "";
+
+            clearInfo();
+
+            document.querySelector(".title").textContent =
+                `${monthNames[month]} ${year}`;
+
+            const firstDay = new Date(year, month, 1).getDay();
+
+            const daysInMonth =
+                new Date(year, month + 1, 0).getDate();
+
+            const prevMonthDays =
+                new Date(year, month, 0).getDate();
+
+            const totalCells = 35;
+
+            for (let i = 0; i < totalCells; i++) {
+
+                const day = document.createElement("div");
+
+                day.className = "day";
+
+                day.style.animationDelay = `${i * 0.025}s`;
+
+                let dayNum;
+
+                let cellMonth = month;
+
+                let cellYear = year;
+
+                let outside = false;
+
+                if (i < firstDay) {
+
+                    dayNum =
+                        prevMonthDays - firstDay + i + 1;
+
+                    cellMonth = month - 1;
+
+                    if (cellMonth < 0) {
+
+                        cellMonth = 11;
+
+                        cellYear--;
+                    }
+
+                    outside = true;
+
+                }
+
+                else if (i >= firstDay + daysInMonth) {
+
+                    dayNum =
+                        i - (firstDay + daysInMonth) + 1;
+
+                    cellMonth = month + 1;
+
+                    if (cellMonth > 11) {
+
+                        cellMonth = 0;
+
+                        cellYear++;
+                    }
+
+                    outside = true;
+
+                }
+
+                else {
+
+                    dayNum = i - firstDay + 1;
+                }
+
+                const weekday = i % 7;
+
+                if (weekday === 0)
+                    day.classList.add("sun");
+
+                if (weekday === 6)
+                    day.classList.add("sat");
+
+                if (outside)
+                    day.classList.add("outside");
+
+                const isWeekend =
+                    weekday === 0 || weekday === 6;
+
+                if (isWeekend)
+                    day.classList.add("no-class");
+
+                const dateKey =
+                    `${cellYear}-${pad(cellMonth + 1)}-${pad(dayNum)}`;
+
+                const list =
+                    reservations[dateKey] || [];
+
+                const num = document.createElement("div");
+
+                num.className = "num";
+
+                num.textContent = pad(dayNum);
+
+                day.appendChild(num);
+
+                if (!isWeekend && list.length) {
+
+                    const markers =
+                        document.createElement("div");
+
+                    markers.className = "markers";
+
+                    const uniqueTypes =
+                        [...new Set(list.map(item => item.type))];
+
+                    uniqueTypes.forEach(type => {
+
+                        const dot =
+                            document.createElement("span");
+
+                        dot.className = `dot ${type}`;
+
+                        markers.appendChild(dot);
+
+                    });
+
+                    day.appendChild(markers);
+
+                    day.style.cursor = "pointer";
+
+                    day.addEventListener("click", () => {
+
+                        document
+                            .querySelectorAll(".day")
+                            .forEach(el =>
+                                el.classList.remove("selected-day"));
+
+                        day.classList.add("selected-day");
+
+                        showInfo(dateKey, list);
+
+                    });
+                }
+
+                calendar.appendChild(day);
+            }
+        }
+
+        prevBtn.addEventListener("click", () => {
+
+            currentMonth--;
+
+            if (currentMonth < 0) {
+
+                currentMonth = 11;
+
+                currentYear--;
+            }
+
+            renderCalendar(currentYear, currentMonth);
+        });
+
+        nextBtn.addEventListener("click", () => {
+
+            currentMonth++;
+
+            if (currentMonth > 11) {
+
+                currentMonth = 0;
+
+                currentYear++;
+            }
+
+            renderCalendar(currentYear, currentMonth);
+        });
+
+        const observer =
+            new IntersectionObserver(entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+                    }
+                });
+
+            }, { threshold: 0.1 });
+
+        document
+            .querySelectorAll(".reveal")
+            .forEach(el => observer.observe(el));
+
+        renderCalendar(currentYear, currentMonth);
+
+    </script>
+
+</body>
+
+</html>

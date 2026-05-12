@@ -138,7 +138,7 @@
   font-size: 13px;
 }
 
-.dark-toggle input:checked + .toggle-track .toggle-knob {
+.dark-toggle input:checked+.toggle-track .toggle-knob {
   transform: translateX(24px);
 }
 
@@ -154,26 +154,36 @@
   position: fixed;
   top: 0;
   right: -300px;
-  width: 260px;
+  /* Começa escondido */
+  width: 300px;
   height: 100%;
-  background-color: var(--bg-menu-lateral);
-  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.3);
-  padding-top: 100px;
-  transition: right 0.3s, background-color 0.3s;
+  background-color: #1a1a1a;
+  transition: right 0.4s ease;
+  /* Efeito de deslizar */
+  z-index: 1000;
+  padding-top: 60px;
   display: flex;
   flex-direction: column;
-  z-index: 100;
+}
+
+.menu-lateral.ativo {
+  right: 0;
+  /* Aparece na tela */
 }
 
 .menu-lateral a {
-  padding: 20px;
+  padding: 15px 25px;
   text-decoration: none;
-  color: var(--text-menu);
+  color: white;
   font-size: 18px;
+  border-bottom: 1px solid #333;
 }
 
-.menu-lateral a:hover {
-  background-color: var(--bg-menu-hover);
+.menu {
+  cursor: pointer;
+  font-size: 30px;
+  z-index: 1001;
+  /* Fica acima do menu */
 }
 
 /* ==================== CONTAINER ==================== */
@@ -231,17 +241,45 @@
   font-size: 26px;
 }
 
-.calendario { background: #f4b04f; }
-.reserva    { background: #8be28b; }
-.info       { background: #8b8fe2; }
-.aviso      { background: #b18be2; }
-.cadastro   { background: #e28bb3; }
+.calendario {
+  background: #f4b04f;
+}
 
-[data-theme="dark"] .calendario { background: #a87530; }
-[data-theme="dark"] .reserva    { background: #4a9e4a; }
-[data-theme="dark"] .info       { background: #5a5ea8; }
-[data-theme="dark"] .aviso      { background: #7a5ea8; }
-[data-theme="dark"] .cadastro   { background: #a85a80; }
+.reserva {
+  background: #8be28b;
+}
+
+.info {
+  background: #8b8fe2;
+}
+
+.aviso {
+  background: #b18be2;
+}
+
+.cadastro {
+  background: #e28bb3;
+}
+
+[data-theme="dark"] .calendario {
+  background: #a87530;
+}
+
+[data-theme="dark"] .reserva {
+  background: #4a9e4a;
+}
+
+[data-theme="dark"] .info {
+  background: #5a5ea8;
+}
+
+[data-theme="dark"] .aviso {
+  background: #7a5ea8;
+}
+
+[data-theme="dark"] .cadastro {
+  background: #a85a80;
+}
 
 /* ==================== TEXTOS DO CARD ==================== */
 .card h3 {

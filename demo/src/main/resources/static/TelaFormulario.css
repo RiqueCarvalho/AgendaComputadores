@@ -175,3 +175,31 @@ header h1 {
 .menu-lateral a:hover {
     background-color: #d0d0d0;
 }
+
+.rodape {
+    text-align: center;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    /* Espaço entre os botões */
+}
+
+/* ESTILO DO BOTÃO VOLTAR */
+.btn-voltar {
+    background-color: #c50909;
+    color: black;
+    border: none;
+    padding: 12px 60px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.btn-voltar:hover {
+    background-color: #ef0606;
+    transform: scale(1.02);
+}

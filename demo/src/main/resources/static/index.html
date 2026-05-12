@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reserva de Sala</title>
+  <title>Menu Principal</title>
   <link rel="stylesheet" href="TelaPrincipal.css">
 </head>
 
@@ -23,6 +23,15 @@
     <div class="decor">
       <img src="imagens/São_Paulo_Government_Logo.svg.png" alt="Governo de São Paulo">
     </div>
+
+    <!-- TOGGLE DARK MODE -->
+    <label class="dark-toggle" title="Alternar modo escuro">
+      <input type="checkbox" id="darkToggle">
+      <div class="toggle-track">
+        <div class="toggle-knob" id="toggleIcon">🌙</div>
+      </div>
+      <span class="toggle-label" id="toggleLabel">Dark</span>
+    </label>
 
     <div class="menu" onclick="toggleMenu()">☰</div>
   </header>
@@ -81,19 +90,25 @@
     <p>Governo de São Paulo | SAMPA</p>
   </footer>
 
-  <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <!-- SCRIPT -->
   <script>
+    // ===== MENU LATERAL (CORRIGIDO) =====
     function toggleMenu() {
       const menu = document.getElementById("menuLateral");
-      menu.style.right = (menu.style.right === "0px") ? "-300px" : "0px";
+      // O toggle adiciona a classe "ativo" se não tiver, e remove se tiver
+      menu.classList.toggle("ativo");
     }
 
+    // Fecha o menu se clicar em qualquer link lá dentro
+    $(".menu-lateral a").click(function () {
+      $("#menuLateral").removeClass("ativo");
+    });
+
+    // ===== CARROSSEL =====
     let index = 0;
     const slides = $(".slide");
-
     slides.hide().eq(0).show();
 
     function trocarSlide() {
@@ -101,8 +116,33 @@
       index = (index + 1) % slides.length;
       slides.eq(index).fadeIn(800);
     }
-
     setInterval(trocarSlide, 3000);
+
+    // ===== DARK MODE =====
+    const toggle = document.getElementById("darkToggle");
+    const icon = document.getElementById("toggleIcon");
+    const label = document.getElementById("toggleLabel");
+
+    if (localStorage.getItem("tema") === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+      toggle.checked = true;
+      icon.textContent = "☀️";
+      label.textContent = "Light";
+    }
+
+    toggle.addEventListener("change", () => {
+      if (toggle.checked) {
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("tema", "dark");
+        icon.textContent = "☀️";
+        label.textContent = "Light";
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+        localStorage.setItem("tema", "light");
+        icon.textContent = "🌙";
+        label.textContent = "Dark";
+      }
+    });
   </script>
 
 </body>
