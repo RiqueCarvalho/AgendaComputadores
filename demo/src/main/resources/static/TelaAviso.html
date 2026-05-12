@@ -26,38 +26,13 @@
   </header>
 
   <main>
-    <div class="cards-grid">
+    <div class="cards-grid" id="grid-avisos">
+      <!-- Os avisos do banco vão aparecer aqui -->
+    </div>
 
-      <!-- Card Sala em Manutenção -->
-      <div class="card">
-        <div class="card-img-wrap">
-          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&q=80"
-            alt="Sala de Informática" />
-        </div>
-        <div class="card-body">
-          <p><strong>Sala em Manutenção:</strong></p>
-          <p>Previsão Término: 12/06/2026</p>
-          <p>Motivo: Troca de Monitores</p>
-        </div>
-      </div>
-
-      <!-- Botão Voltar centralizado -->
-      <div class="center-col">
-        <a href="index.html" class="btn-voltar">Voltar</a>
-      </div>
-
-      <!-- Card Reuniões -->
-      <div class="card">
-        <div class="card-img-wrap">
-          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&q=80" alt="Reunião" />
-        </div>
-        <div class="card-body">
-          <p><strong>Reuniões:</strong></p>
-          <p>Motivo: Alinhamento</p>
-          <p>Data: Toda Quarta-Feira</p>
-        </div>
-      </div>
-
+    <!-- Botão Voltar (mantenha fora da grid para não sumir) -->
+    <div class="center-col">
+      <a href="index.html" class="btn-voltar">Voltar</a>
     </div>
 
     <div class="footer-logo">
@@ -65,6 +40,30 @@
     </div>
   </main>
 
+  <script>
+    async function carregarAvisos() {
+      const response = await fetch('http://localhost:8080/api/avisos');
+      const avisos = await response.json();
+      const grid = document.getElementById('grid-avisos');
+
+      grid.innerHTML = avisos.map(aviso => `
+    <div class="card">
+        <div class="card-img-wrap">
+            <!-- Verifique se no Java é imagemUrl ou imagem_url -->
+            <img src="${aviso.imagemUrl}" alt="${aviso.titulo}" />
+        </div>
+        <div class="card-body">
+            <!-- Verifique se no Java é titulo e conteudo -->
+            <p><strong>${aviso.titulo}:</strong></p>
+            <p>${aviso.conteudo}</p>
+        </div>
+    </div>
+`).join('');
+    }
+
+    // Carrega os avisos assim que a página abre
+    window.onload = carregarAvisos;
+  </script>
 </body>
 
 </html>
