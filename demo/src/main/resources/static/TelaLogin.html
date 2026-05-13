@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="TelaLogin.css">
     <title>Educare - Login</title>
-    
+
 </head>
+
 <body>
 
     <!-- Container da Coruja com ID para o clique -->
@@ -52,7 +54,7 @@
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            
+
             // Só move os olhos se não estiver tonta
             if (!isDizzy) {
                 updateEyes(mouseX, mouseY);
@@ -67,7 +69,7 @@
                 const olhoX = rect.left + rect.width / 2;
                 const olhoY = rect.top + rect.height / 2;
                 const angulo = Math.atan2(yPos - olhoY, xPos - olhoX);
-                const maxDist = rect.width * 0.15; 
+                const maxDist = rect.width * 0.15;
                 const x = Math.cos(angulo) * maxDist;
                 const y = Math.sin(angulo) * maxDist;
                 imagemOlho.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
@@ -77,9 +79,9 @@
         // Evento de clique na coruja para ativar a animação
         corujaContainer.addEventListener('click', () => {
             if (isDizzy) return; // Evita bugs se clicar várias vezes seguidas
-            
+
             isDizzy = true;
-            
+
             // Adiciona as classes de animação definidas no CSS
             corujaContainer.classList.add('shake-animation');
             olhos.forEach(olho => {
@@ -97,7 +99,32 @@
                 updateEyes(mouseX, mouseY);
             }, 1500);
         });
+
+        document.querySelector('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const rg = document.querySelectorAll('input')[0].value;
+            const senha = document.querySelectorAll('input')[1].value;
+
+            const response = await fetch('http://localhost:8080/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ rg, senha })
+            });
+
+            const resultado = await response.json();
+
+            if (resultado.status === "sucesso") {
+                alert("Bem-vindo! Perfil: " + resultado.cargo);
+                window.location.href = resultado.redirect;
+            } else {
+                alert(resultado.mensagem);
+                // Opcional: faz a coruja tremer se errar a senha
+                corujaContainer.click();
+            }
+        });
     </script>
 
 </body>
+
 </html>
